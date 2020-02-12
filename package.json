@@ -1,0 +1,56 @@
+{
+  "name": "stelace-stripe",
+  "version": "0.1.0",
+  "description": "Stelace server wrapper plugin for Stripe",
+  "license": "GPL-3.0",
+  "private": true,
+  "main": "index.js",
+  "author": "Stelace (https://stelace.com)",
+  "scripts": {
+    "test": "cross-env STELACE_PLUGINS_PATHS=$(shx pwd) NODE_ENV=test ava --c $(node -p 'Math.max(os.cpus().length - 1, 1)')",
+    "test:server": "cross-env STELACE_PLUGINS_PATHS=$(shx pwd) npm explore stelace-server -- yarn test:server",
+    "test:ci": "cross-env STELACE_PLUGINS_PATHS=$(shx pwd) NODE_ENV=test ava --c 1 --tap | tap-xunit",
+    "test:ci:server": "cross-env STELACE_PLUGINS_PATHS=$(shx pwd) npm explore stelace-server -- yarn test:ci:server",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "plugins:server": "shx cp .env ./node_modules/stelace-server/.env && cross-env STELACE_PLUGINS_PATHS=$(shx pwd) npm explore stelace-server -- yarn plugins"
+  },
+  "dependencies": {
+    "debug": "^4.1.1",
+    "lodash": "4.17.15",
+    "stelace-util-keys": "https://github.com/stelace/stelace-util-keys.git#3.0.1",
+    "stripe": "^8.14.0"
+  },
+  "devDependencies": {
+    "ava": "^3.0.0",
+    "cross-env": "^7.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": ">=3.0.8",
+    "lint-staged": ">=9.4.1",
+    "ngrok": "^3.2.7",
+    "shx": "^0.3.2",
+    "sql-fixtures": "^1.0.0",
+    "stelace-server": "git+ssh://git@github.com/stelace/stelace.git",
+    "supertest": "^4.0.2",
+    "tap-xunit": "^2.4.1"
+  },
+  "engines": {
+    "node": ">=12.14"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
