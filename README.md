@@ -6,7 +6,7 @@
   https://stelace.com/docs/command/workflows
 ).
 
-[![CircleCI](https://circleci.com/gh/stelace/stelace.svg?style=svg)](https://circleci.com/gh/stelace/stelace)
+[![CircleCI](https://circleci.com/gh/stelace/stelace-stripe.svg?style=svg)](https://circleci.com/gh/stelace/stelace-stripe)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-yellow.svg)](https://standardjs.com)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
