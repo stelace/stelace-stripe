@@ -14,7 +14,7 @@
 
 ## Example usage
 
-With [JavaScript SDK](https://github.com/stelace/stelace.js):
+With [Stelace JavaScript SDK](https://github.com/stelace/stelace.js):
 
 ```js
 const { createInstance } = require('stelace')
@@ -161,32 +161,42 @@ await axios.patch(
 
 ## Tests and development
 
-You’ll be able to run plugin tests as long as a Stripe secret API key is provided in the .env file, or in CI environment.
+A Stripe secret API key must be provided in the .env file, or in CI environment.
 
 ```sh
 STRIPE_SECRET_API_KEY=...
 ```
 
-Before launching tests, please ensure plugins specified in the environment variable `INSTALLED_PLUGINS` are installed:
+Install plugin dependencies:
 
 ```sh
 yarn
-yarn plugins:server
 ```
 
-and that databases are up and running after:
+Databases should be up and running. You can use stelace-server installed as a dependency for development:
 
 ```sh
+# not needed if you’re already running stelace-server databases
 yarn --cwd node_modules/stelace-server/ run docker:db
 ```
 
-Then you can run plugin tests with `yarn test`.
+Please also ensure that additional stelace-server plugins specified in the server environment variable `INSTALLED_PLUGINS` are installed:
+
+```sh
+yarn plugins:server
+```
+
+### Run tests
+
+```sh
+yarn test
+```
 
 Run plugin tests _and_ all server tests with `yarn test:server`.
 
 ## License
 
-Stelace Copyright © 2018-present Sharinplace SAS.
+© Stelace 2019-present
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
