@@ -95,9 +95,14 @@ module.exports = function createService (deps) {
       page: 1
     }
 
+    const headers = {
+      'x-stelace-version': '2019-05-20',
+    }
+
     const { results: sameEvents } = await stelaceApiRequest('/events', {
       platformId,
       env,
+      headers,
       payload: {
         objectId: event.id,
         nbResultsPerPage: 1,
@@ -114,6 +119,7 @@ module.exports = function createService (deps) {
     await stelaceApiRequest('/events', {
       platformId,
       env,
+      headers,
       method: 'POST',
       payload: {
         // https://stripe.com/docs/api/events/types
