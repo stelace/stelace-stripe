@@ -64,6 +64,11 @@ jobs:
             cp node_modules/stelace-server/docker-*.yml .
             cp node_modules/stelace-server/Dockerfile* .
       - run:
+          name: Copy SSL certificates
+          command: |
+            mkdir -p test/ssl
+            cp node_modules/stelace-server/test/ssl/* test/ssl
+      - run:
           name: Pull ElasticSearch docker image
           command: |
             docker pull abruere/elasticsearch:latest
